@@ -1,0 +1,142 @@
+npx create-next-app@latest
+npm run dev
+npm i @chakra-ui/react @chakra-ui/next-js @emotion/react @emotion/styled framer-motion firebase recoil
+
+bug fix:
+https://stackoverflow.com/questions/73897836/cannot-find-module-chakra-ui-react-or-its-corresponding-type-declarations#:~:text=Sometimes%20it%20happens%20due%20to,and%20usually%20fixed%20import%20issues.&text=Uninstalling%20chakra%20ui%20fixed%20this%20for%20me.
+ctrl + shift + p and then restart ts server
+
+
+# JAVA BACKEND
+CreateUserWithEmailAndPassword
+const [
+    createUserWithEmailAndPassword,
+    user,
+    loading, // loading state boolean
+    userError,
+] = useCreateUserWithEmailAndPassword(auth);
+
+POST @ v1/accounts:signUp
+{
+    clientType: "CLIENT_TYPE_WEB"
+    email: "ramanverma0401@gmail.com"
+    password: "Pass123"
+    returnSecureToken: true
+}
+
+{
+  "kind": "identitytoolkit#SignupNewUserResponse",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE2YzYzNTNmMmEzZWMxMjg2NTA1MzBkMTVmNmM0Y2Y0NTcxYTQ1NTciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcmVhY3QtY2xvbmUtZWE4ZjUiLCJhdWQiOiJyZWFjdC1jbG9uZS1lYThmNSIsImF1dGhfdGltZSI6MTcwMDU3NjA2NiwidXNlcl9pZCI6InpndWNVY3lLUjVacE9wWXZFQ1Iwd3A4eHhuRzIiLCJzdWIiOiJ6Z3VjVWN5S1I1WnBPcFl2RUNSMHdwOHh4bkcyIiwiaWF0IjoxNzAwNTc2MDY2LCJleHAiOjE3MDA1Nzk2NjYsImVtYWlsIjoia3VsZGVlcGJpc2hub2kuMjAwMUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia3VsZGVlcGJpc2hub2kuMjAwMUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.CkSVT1tvGejt6aO6aMk820tAbmh6nFzHYhwa6-cl-fod0bLxgEaY17BVaBMMER5oPaYeV469e4xqUBr9RIObqi33-i6mTVZacT8rMLLwAgEezyGOYdxt9WCAGRZrx6icggcijse1b8H3HileeneiZN_xzeYGNwG9xZGShDdJkedtTgrhSSmyxR0het8dlKbVghc2FH8RaKqF0jtlfcL9k8DsXv8OvhApKctTlCCjS4pHvBLE3TVLst6BcWke6B2vtsVYikHrXAsqZbxq99Vpr_pK9WyXF6m5gh678WrgGMh8p_fUzzNbPLwujvVGW6bVANzAnv0vPOiKl5sRVHzO7w",
+  "email": "kuldeepbishnoi.2001@gmail.com",
+  "refreshToken": "AMf-vBxJR67GMuG7NHK1g2EciRkup7bYFIC8DLW6SmnKhctwxPz4dL_BRC-05_7B16FRgCXEkF2Nv9fNq32Rv4VdF38bpyyyYW40znGj_N-z0upAMfUDk6p2IYgX8v12UtIWjPLglz93vftZmP1DVYICRFDSJAF2bRLBnlTVposwf4_sRphglRuz7CUC9mMbjelJCzOlH4arA7RZBEmfSx2F3zYr60qKd8d9o74l12BtSFbliPPoRaE",
+  "expiresIn": "3600",
+  "localId": "zgucUcyKR5ZpOpYvECR0wp8xxnG2"
+}
+{
+    "error": {
+      "code": 400,
+      "message": "EMAIL_EXISTS",
+      "errors": [
+        {
+          "message": "EMAIL_EXISTS",
+          "domain": "global",
+          "reason": "invalid"
+        }
+      ]
+    }
+}
+
+POST @ /v1/accounts:lookup
+{
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE2YzYzNTNmMmEzZWMxMjg2NTA1MzBkMTVmNmM0Y2Y0NTcxYTQ1NTciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcmVhY3QtY2xvbmUtZWE4ZjUiLCJhdWQiOiJyZWFjdC1jbG9uZS1lYThmNSIsImF1dGhfdGltZSI6MTcwMDU3NjA2NiwidXNlcl9pZCI6InpndWNVY3lLUjVacE9wWXZFQ1Iwd3A4eHhuRzIiLCJzdWIiOiJ6Z3VjVWN5S1I1WnBPcFl2RUNSMHdwOHh4bkcyIiwiaWF0IjoxNzAwNTc2MDY2LCJleHAiOjE3MDA1Nzk2NjYsImVtYWlsIjoia3VsZGVlcGJpc2hub2kuMjAwMUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia3VsZGVlcGJpc2hub2kuMjAwMUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.CkSVT1tvGejt6aO6aMk820tAbmh6nFzHYhwa6-cl-fod0bLxgEaY17BVaBMMER5oPaYeV469e4xqUBr9RIObqi33-i6mTVZacT8rMLLwAgEezyGOYdxt9WCAGRZrx6icggcijse1b8H3HileeneiZN_xzeYGNwG9xZGShDdJkedtTgrhSSmyxR0het8dlKbVghc2FH8RaKqF0jtlfcL9k8DsXv8OvhApKctTlCCjS4pHvBLE3TVLst6BcWke6B2vtsVYikHrXAsqZbxq99Vpr_pK9WyXF6m5gh678WrgGMh8p_fUzzNbPLwujvVGW6bVANzAnv0vPOiKl5sRVHzO7w"
+}
+{
+  "kind": "identitytoolkit#GetAccountInfoResponse",
+  "users": [
+    {
+      "localId": "zgucUcyKR5ZpOpYvECR0wp8xxnG2",
+      "email": "kuldeepbishnoi.2001@gmail.com",
+      "passwordHash": "UkVEQUNURUQ=",
+      "emailVerified": false,
+      "passwordUpdatedAt": 1700576066400,
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "federatedId": "kuldeepbishnoi.2001@gmail.com",
+          "email": "kuldeepbishnoi.2001@gmail.com",
+          "rawId": "kuldeepbishnoi.2001@gmail.com"
+        }
+      ],
+      "validSince": "1700576066",
+      "lastLoginAt": "1700576066400",
+      "createdAt": "1700576066400",
+      "lastRefreshAt": "2023-11-21T14:14:26.400Z"
+    }
+  ]
+}
+
+Post @ v1/accounts:signInWithPassword
+https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword
+{
+  clientType: "CLIENT_TYPE_WEB"
+  email: "ramanverma0401@gmail.com"
+  password: "Pass123"
+  returnSecureToken: true
+}
+
+{
+  "kind": "identitytoolkit#VerifyPasswordResponse",
+  "localId": "Y683xICEoKNphTKfokgGUaTg0Tv2",
+  "email": "ramanverma0401@gmail.com",
+  "displayName": "",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE2YzYzNTNmMmEzZWMxMjg2NTA1MzBkMTVmNmM0Y2Y0NTcxYTQ1NTciLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcmVhY3QtY2xvbmUtZWE4ZjUiLCJhdWQiOiJyZWFjdC1jbG9uZS1lYThmNSIsImF1dGhfdGltZSI6MTcwMDU4MTI4NSwidXNlcl9pZCI6Ilk2ODN4SUNFb0tOcGhUS2Zva2dHVWFUZzBUdjIiLCJzdWIiOiJZNjgzeElDRW9LTnBoVEtmb2tnR1VhVGcwVHYyIiwiaWF0IjoxNzAwNTgxMjg1LCJleHAiOjE3MDA1ODQ4ODUsImVtYWlsIjoicmFtYW52ZXJtYTA0MDFAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbInJhbWFudmVybWEwNDAxQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.Xe32YSj7Jkxxlfue1csKGZ4UQogvH89yb07uy3qUvRlV1x4_GOemD5SGTavkfLnqcO60THNfZ3Feg-XWvMJlgALRYcv02dJU6dVkOBE_W--9ApBd4-7iWuFI0hfXsNwz8F7tT_eSt4eGhvHejHoB3kxJaK9as5RTzkSzUZkygHhBnX8dUaTmbYnEw_UUcoy4IRxwZP0xD8LHxYW5JSq4B74G7ElC9ja1Uq3vtHcT8RzxDNnqGZv_ZJtUG8hgqMW228iowqPFF7BZ4qcshieOJpnlTfiPSHnRiUYfKAqjdWfoNeTRzVFMDKqiNZ6WaM0d6VH6npNWYlJB24VCN8Pc5g",
+  "registered": true,
+  "refreshToken": "AMf-vBxW_2yUDazs-OnCqnLRmbZC5wtLwJaDfcwqSrfI1yc7FahnM8a8EOmQ_zCS88mDZoo2Sg2pWsPar3_yOmsfW-ybZTjFlS4djy6CE5JLmG1tHjr5Fm7qQmfjDC1Dt4bGOfvFE1K3xsk88z20-gyhkqHBKLyorITZbY9_nSld6rxvz-XZJ_yMRsADixlzSotaRezsUSb2nfKEf5b0dkuNEgTWKqHkYsBwRrNPxlO0wgvw9y2kdjk",
+  "expiresIn": "3600"
+}
+{
+  "error": {
+    "code": 400,
+    "message": "INVALID_LOGIN_CREDENTIALS",
+    "errors": [
+      {
+        "message": "INVALID_LOGIN_CREDENTIALS",
+        "domain": "global",
+        "reason": "invalid"
+      }
+    ]
+  }
+}
+
+// continue with google
+{
+  "federatedId": "https://accounts.google.com/100110107281025473124",
+  "providerId": "google.com",
+  "email": "kuldeepbishnoi.2001@gmail.com",
+  "emailVerified": true,
+  "firstName": "Kuldeep",
+  "fullName": "Kuldeep Bishnoi",
+  "lastName": "Bishnoi",
+  "photoUrl": "https://lh3.googleusercontent.com/a/ACg8ocJzs3SlSSYgSbAuSuRAP8pUmXnz38Dg6dB0iN9Ge8DA4aY=s96-c",
+  "localId": "b19bgkFxWTh7XBqmjhFYtx0B9PT2",
+  "displayName": "Kuldeep Bishnoi",
+  "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImE2YzYzNTNmMmEzZWMxMjg2NTA1MzBkMTVmNmM0Y2Y0NTcxYTQ1NTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS3VsZGVlcCBCaXNobm9pIiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0p6czNTbFNTWWdTYkF1U3VSQVA4cFVtWG56MzhEZzZkQjBpTjlHZThEQTRhWT1zOTYtYyIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9yZWFjdC1jbG9uZS1lYThmNSIsImF1ZCI6InJlYWN0LWNsb25lLWVhOGY1IiwiYXV0aF90aW1lIjoxNzAwNTgxNjIyLCJ1c2VyX2lkIjoiYjE5YmdrRnhXVGg3WEJxbWpoRll0eDBCOVBUMiIsInN1YiI6ImIxOWJna0Z4V1RoN1hCcW1qaEZZdHgwQjlQVDIiLCJpYXQiOjE3MDA1ODE2MjIsImV4cCI6MTcwMDU4NTIyMiwiZW1haWwiOiJrdWxkZWVwYmlzaG5vaS4yMDAxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7Imdvb2dsZS5jb20iOlsiMTAwMTEwMTA3MjgxMDI1NDczMTI0Il0sImVtYWlsIjpbImt1bGRlZXBiaXNobm9pLjIwMDFAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoiZ29vZ2xlLmNvbSJ9fQ.Wx0OilugrgchZ26JSUcx5D875RGxU326JmI_s9sXmo_U7msQlrVnykhOj-ild-CEleLN3IMbAaGOLPoc2psVufyvYhL7KjHYhMBlJsV6DBlOXF6CNIZrevnm1sWOdB4iqujNGnxh0lldi8tCRlZkR5t3DQb-ksLxHh_u5QhNmqfseU_MVRyNcmv7d1zGaY8EF04XVa0KqRKmNIDU5bjtIM91fQvZGVve0_OWqqm0uKPjSVk9x20sG0ZxktFBskzB_SKasct-AlrNcXtasdkq8GRdwpQ1G9DSLbvAeDyV_-DcUdihBMdruIuhwv8R93xCd-Yk9T55Wo18oR5stZWNbw",
+  "context": "",
+  "oauthAccessToken": "ya29.a0AfB_byBp-4fzPTVLzq5-53bLoPoSddmASpT2q_w2fIAvQ4AUjKp6N2Mot57Rc5iVMZsJEA10LRni9Q173_xE8h_QmmihyJxNlESuqtvbTiyDzLmaNn5Hk678BLeKNQbSw0vKiJTjuxe2LZnrVcBkRKyBUrjdzjWplQaCgYKASMSARASFQHGX2MiLUF8orPCP5IbYQIfMB37PQ0169",
+  "oauthExpireIn": 3598,
+  "refreshToken": "AMf-vBx2J9gXRdtJqNKjK4UXPHXkVLppfheMC4oq_0hjsVavIymG9KCghvHGIWweRYzs_SCuRWEGDNSI4TxO8EqczqSlnF0uc0gd2ke_6c-GNI6aS9_UPSi7LisuItClZNACFY97iM-CIhZLPMH2fJvykWx-cO6BS-sni3A18WRsf9oKPedoA75JXJuZh-rWC7h8OLjfF6qKd08vzrdUG9BaKV0mECWux1nr_LKT5fCrOq3XG1RnW91SIqQjQhc8NBcdd8V2IEt4Vtm1zFFglhWPr8AbPo8DySLtt44ZZZroB1CTXY4pkUmfF0tZLObiLhMqOOH4sKpnU6Heh3C-JzXos5a_WX1nqQsENuzHR0vnAD8tWsNkOXfbQkebGjNmBt7hRnQt007UbnPyMJEUCrv-K9bkLzc5cQlHZT4TAQc3vx_Qdo6FdOfqPtIAwyp6h2uD1NHXNOwY",
+  "expiresIn": "3600",
+  "oauthIdToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjViMzcwNjk2MGUzZTYwMDI0YTI2NTVlNzhjZmE2M2Y4N2M5N2QzMDkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiNjk0NDA4NjUzODY0LXRodDhxMzJrZmY4ZWs4Y3NmNWNxaGlvOTlyZTBqaW01LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiNjk0NDA4NjUzODY0LXRodDhxMzJrZmY4ZWs4Y3NmNWNxaGlvOTlyZTBqaW01LmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAwMTEwMTA3MjgxMDI1NDczMTI0IiwiZW1haWwiOiJrdWxkZWVwYmlzaG5vaS4yMDAxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhdF9oYXNoIjoicmtPOVUtM2pmMzFQUG44WUYtNVlwUSIsImlhdCI6MTcwMDU4MTYyMiwiZXhwIjoxNzAwNTg1MjIyfQ.XiTs3tzgpFj1yz3A0BMae7f8j0NR3a53vw3XMC1TXUe3r6N2XmkZmA6xArY3XFPulM3B6gFIoG7AJslbIuVJNbFjiCOduiONKoCLu9-yo98hA0TUg-UwiKzkj2aLOY9vISXwf-LQ2CSL1yKGaVc5VK1l80t0cPU7-QOn0HKuULzkmMzGl9JWq8fJC2_95s90V6vDvaAYybwndMmU_T_4yNHJDNyNIw0gRs_tfRWDvzFdipBjK-puch7c2tiSV0vkAVFdmYmgtroYyPuI4n4B3JZeZcTb0baFgrnYwhVTU5YMrsiG5-oA-Zqv6m9qcCkVRA9jqiUYIpKzkvKt9l49yg",
+  "rawUserInfo": "{\"name\":\"Kuldeep Bishnoi\",\"granted_scopes\":\"https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid\",\"id\":\"100110107281025473124\",\"verified_email\":true,\"given_name\":\"Kuldeep\",\"locale\":\"en\",\"family_name\":\"Bishnoi\",\"email\":\"kuldeepbishnoi.2001@gmail.com\",\"picture\":\"https://lh3.googleusercontent.com/a/ACg8ocJzs3SlSSYgSbAuSuRAP8pUmXnz38Dg6dB0iN9Ge8DA4aY=s96-c\"}",
+  "kind": "identitytoolkit#VerifyAssertionResponse"
+}
+
+Database:
+"localId"
+"email"
+"passwordHash"
+"emailVerified"
+"passwordUpdatedAt"
+"lastLoginAt"
+"createdAt"
+"lastRefreshAt""
